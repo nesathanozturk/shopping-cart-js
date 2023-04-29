@@ -15,11 +15,11 @@
 
 html,
 body {
-  height: 100vh;
   font-family: "Poppins", sans-serif;
 }
 
 body {
+  height: 100vh;
   position: relative;
   line-height: 1.6;
   overflow: hidden;
@@ -67,8 +67,9 @@ section {
 nav {
   background: #5d3ebc;
   width: 100%;
-  padding: 1.3rem;
+  padding: 1.3rem 5rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   color: #fff;
@@ -77,7 +78,7 @@ nav {
 nav .title {
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: clamp(0.5rem, 8vw, 2rem);
 }
 
 nav .cart-icon {
@@ -197,14 +198,65 @@ nav .basket-length {
 
 /* Products */
 .products {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 2rem;
   padding: 1rem;
 }
 
 .products .container {
-  width: 1100px;
+  width: 100%;
+  margin: 0 auto;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 2rem;
+}
+
+.products .container .product-item {
+  background-color: rgb(255, 255, 255);
+  max-width: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0.7rem 1rem;
+  transition: all 0.2s ease 0s;
+}
+
+.products .container .product-item:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1rem 2rem;
+}
+
+.products .container .product-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.products .container .product-item .product-info {
+  padding: 2rem;
+}
+
+.products .container .product-item .product-info h2 {
+  font-size: 1.6rem;
+}
+
+.products .container .product-item .product-info p {
+  color: #5e5e5e;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.products .container .product-item .product-info button {
+  background: #5d3ebc;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
