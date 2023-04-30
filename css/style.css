@@ -106,15 +106,15 @@ nav .basket-length {
   position: fixed;
   top: 0;
   right: 0;
-  display: none;
+  transform: translateX(100%);
   border: 0.1px solid rgb(219, 219, 219);
   border-radius: 0.3rem;
   transition: all 0.45s ease-in-out;
 }
 
 .basket.active {
+  transform: translateX(0);
   z-index: 999;
-  display: block;
 }
 
 .basket .container {
@@ -319,7 +319,14 @@ nav .basket-length {
   transition: all 0.2s ease 0s;
 }
 
-@media (360px<= width <= 670px) {
+/* Responsive */
+@media (0 <= width <= 76.8rem) {
+  .basket .container {
+    width: 100vw;
+  }
+}
+
+@media (36rem<= width <= 67rem) {
   .products .container {
     place-items: center;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
@@ -341,7 +348,7 @@ nav .basket-length {
   }
 }
 
-@media (width <= 360px) {
+@media (width <= 36rem) {
   nav {
     justify-content: center;
     gap: 1rem;
