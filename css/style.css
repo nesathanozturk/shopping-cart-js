@@ -77,7 +77,7 @@ nav {
 nav .title {
   font-weight: bold;
   text-transform: uppercase;
-  font-size: clamp(0.5rem, 8vw, 2rem);
+  font-size: clamp(0.5rem, 6vw, 2rem);
 }
 
 nav .cart-icon {
@@ -90,17 +90,20 @@ nav i {
 }
 
 nav .basket-length {
+  background-color: rgb(255, 183, 0);
+  padding: 0rem 0.5rem;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -13px;
+  right: -22px;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 /* Basket */
 .basket {
   background: #fff;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   display: none;
@@ -116,8 +119,10 @@ nav .basket-length {
 
 .basket .container {
   width: 40rem;
+  height: 100vh;
   margin: 0 auto;
   padding: 1rem;
+  overflow: scroll;
 }
 
 .basket .container .basket-header {
@@ -258,6 +263,7 @@ nav .basket-length {
 .products .container .product-item {
   background-color: rgb(255, 255, 255);
   max-width: 18rem;
+  max-height: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -311,4 +317,60 @@ nav .basket-length {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease 0s;
+}
+
+@media (360px<= width <= 670px) {
+  .products .container {
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  }
+
+  .products .container .product-item {
+    width: 100%;
+  }
+
+  .products .container .product-item .product-info h2 {
+    font-size: 1.4rem;
+  }
+  .products .container .product-item .product-info p {
+    font-size: 1rem;
+  }
+  .products .container .product-item .product-info button {
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (width <= 360px) {
+  nav {
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.3rem;
+  }
+
+  nav i {
+    font-size: 1.5rem;
+  }
+
+  nav .basket-length {
+    font-size: 0.9rem;
+  }
+
+  .products .container {
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  }
+
+  .products .container .product-item .product-info h2 {
+    font-size: 1rem;
+  }
+
+  .products .container .product-item .product-info p {
+    font-size: 0.9rem;
+  }
+
+  .products .container .product-item .product-info button {
+    padding: 0.4rem 2rem;
+    font-size: 0.7rem;
+  }
 }

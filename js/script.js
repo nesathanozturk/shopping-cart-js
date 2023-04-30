@@ -187,7 +187,7 @@ const renderCartProducts = () => {
       cart.forEach((cartItem) => {
         if (cartItem.id === cart[index].id) {
           cart.splice(index, 1);
-          saveToLocaleStorage();
+          saveToLocalStorage();
           renderCartProducts();
         }
       });
