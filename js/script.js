@@ -79,8 +79,9 @@ const closeBasket = document.getElementById("closeBasket");
 const clearBasketBtn = document.getElementById("clearBasket");
 const basketItems = document.getElementById("basket-items");
 const basketItemLength = document.getElementById("basketItemLength");
-const productsContainer = document.getElementById("products-container");
+const totalAmount = document.getElementById("totalAmount");
 const basketLength = document.getElementById("basket-length");
+const productsContainer = document.getElementById("products-container");
 
 let cart = [];
 
@@ -129,9 +130,11 @@ const renderProducts = () => {
 
 const renderCartProducts = () => {
   let renderProduct = "";
+  let cartAmount = 0;
 
   if (cart.length > 0) {
     cart.forEach((cartItem) => {
+      cartAmount += cartItem.price * cartItem.amount;
       renderProduct += `
             <div class="basket-item">
             <div class="item-image">
@@ -164,6 +167,7 @@ const renderCartProducts = () => {
   }
 
   basketItems.innerHTML = renderProduct;
+  totalAmount.innerText = `Total Amount: $${cartAmount}`;
 
   if (cart.length > 0) {
     basketLength.innerText = cart.length;
@@ -200,7 +204,7 @@ clearBasketBtn.addEventListener("click", (id) => {
 });
 
 openBasket.addEventListener("click", () => {
-  basket.classList.toggle("active");
+  basket.classList.add("active");
 });
 
 closeBasket.addEventListener("click", () => {
