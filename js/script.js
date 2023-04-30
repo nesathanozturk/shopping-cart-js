@@ -83,7 +83,7 @@ const totalAmount = document.getElementById("totalAmount");
 const basketLength = document.getElementById("basket-length");
 const productsContainer = document.getElementById("products-container");
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const renderProducts = () => {
   let renderProduct = "";
@@ -120,9 +120,10 @@ const renderProducts = () => {
     const existingProduct = cart.find((item) => item.id === product.id);
 
     if (existingProduct) {
-      existingProduct.amount += 1;
+      alert("This product is already in your basket!");
     } else {
       cart.push(product);
+      saveToLocalStorage();
       renderCartProducts();
     }
   };
@@ -144,7 +145,7 @@ const renderCartProducts = () => {
               />
             </div>
             <div class="item-info">
-              <h2>${cartItem.title}t</h2>
+              <h2>${cartItem.title}</h2>
               <p>&dollar;${cartItem.price}</p>
               <div class="inc-dec">
                 <span>
@@ -156,7 +157,7 @@ const renderCartProducts = () => {
                 </span>
               </div>
               <span id="removeItem class="">
-                <i class="fa-sharp fa-solid fa-xmark fa-2x remove-item"></i>
+                <i id="remove-item" class="fa-sharp fa-solid fa-xmark fa-2x"></i>
               </span>
             </div>
           </div>
@@ -177,31 +178,70 @@ const renderCartProducts = () => {
     basketItemLength.innerText = "Total Items: 0";
   }
 
-  const removeItemBtn = document.querySelectorAll(".remove-item");
+  const removeItemBtn = document.querySelectorAll("#remove-item");
+  const increaseBtn = document.querySelectorAll(".fa-plus");
+  const decreaseBtn = document.querySelectorAll(".fa-minus");
 
   removeItemBtn.forEach((removeItemButton, index) => {
     removeItemButton.addEventListener("click", () => {
-      for (let i = 0; i < cart.length; i++) {
-        const cartItem = cart[i];
-        removeItemFromBasket(cartItem);
-      }
+      cart.forEach((cartItem) => {
+        if (cartItem.id === cart[index].id) {
+          cart.splice(index, 1);
+          saveToLocaleStorage();
+          renderCartProducts();
+        }
+      });
     });
   });
 
-  const removeItemFromBasket = (index) => {
-    cart.splice(index, 1);
-    renderCartProducts();
+  increaseBtn.forEach((increaseButton, index) => {
+    increaseButton.addEventListener("click", () => {
+      cart.forEach((product) => {
+        if (product.id === cart[index].id) {
+          const existingProduct = cart.find((item) => item.id === product.id);
+
+          existingProduct.amount += 1;
+          renderCartProducts();
+        }
+      });
+    });
+  });
+
+  decreaseBtn.forEach((decreaseButton, index) => {
+    decreaseButton.addEventListener("click", () => {
+      cart.forEach((cartItem) => {
+        if (cartItem.id === cart[index].id) {
+          decreaseAmount(cartItem);
+          renderCartProducts();
+        }
+      });
+    });
+  });
+
+  const decreaseAmount = (cartItem) => {
+    const existingProduct = cart.find((item) => item.id === cartItem.id);
+
+    if (existingProduct.amount === 1) {
+      existingProduct.amount = 1;
+    } else {
+      existingProduct.amount -= 1;
+    }
   };
 };
 
 clearBasketBtn.addEventListener("click", (id) => {
   if (cart.length > 0) {
     cart = cart.filter((item) => item.id === id);
+    saveToLocalStorage();
     renderCartProducts();
   } else {
     alert("Your cart is empty! Add some product!");
   }
 });
+
+const saveToLocalStorage = () => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
 
 openBasket.addEventListener("click", () => {
   basket.classList.add("active");
