@@ -144,6 +144,18 @@ nav .basket-length {
   cursor: pointer;
 }
 
+.basket .container button {
+  background: #a21818;
+  color: #fff;
+  padding: 1rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
 .basket .container .basket-item {
   width: 100%;
   position: relative;
