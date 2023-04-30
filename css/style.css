@@ -200,8 +200,8 @@ nav .basket-length {
 }
 
 .basket .container .basket-item img {
-  max-width: 10rem;
-  max-height: 6rem;
+  width: 6rem;
+  height: 6rem;
 }
 
 .basket .container .basket-item .item-info h2 {
