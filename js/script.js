@@ -187,6 +187,7 @@ const renderCartProducts = () => {
       cart.forEach((cartItem) => {
         if (cartItem.id === cart[index].id) {
           cart.splice(index, 1);
+          cartItem.amount = 1;
           saveToLocalStorage();
           renderCartProducts();
         }
@@ -231,9 +232,12 @@ const renderCartProducts = () => {
 
 clearBasketBtn.addEventListener("click", (id) => {
   if (cart.length > 0) {
-    cart = cart.filter((item) => item.id === id);
-    saveToLocalStorage();
-    renderCartProducts();
+    cart.forEach((cartItem) => {
+      cart = cart.filter((item) => item.id === id);
+      cartItem.amount = 1;
+      saveToLocalStorage();
+      renderCartProducts();
+    });
   } else {
     alert("Your cart is empty! Add some product!");
   }
