@@ -70,34 +70,15 @@ const products = [
     price: 15,
     amount: 1,
   },
-  {
-    id: 11,
-    title: "White Shirt",
-    image: "/images/white-shirt.avif",
-    price: 45,
-    amount: 1,
-  },
-  {
-    id: 12,
-    title: "Black Shirt",
-    image: "/images/black-shirt.avif",
-    price: 42,
-    amount: 1,
-  },
-  {
-    id: 13,
-    title: "Gray Suit",
-    image: "/images/gray-suit.avif",
-    price: 150,
-    amount: 1,
-  },
 ];
 
 // Elements:
 const basket = document.getElementById("basket");
 const openBasket = document.getElementById("openBasket");
 const closeBasket = document.getElementById("closeBasket");
+const clearBasketBtn = document.getElementById("clearBasket");
 const basketItems = document.getElementById("basket-items");
+const basketItemLength = document.getElementById("basketItemLength");
 const productsContainer = document.getElementById("products-container");
 const basketLength = document.getElementById("basket-length");
 
@@ -130,6 +111,7 @@ const renderProducts = () => {
   addToCartButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       addToCart(products[index]);
+      renderCartProducts();
     });
   });
 
@@ -145,42 +127,51 @@ const renderProducts = () => {
   };
 };
 
-renderProducts();
-
 const renderCartProducts = () => {
   let renderProduct = "";
 
-  cart.forEach((cartItem) => {
-    renderProduct += `
-        <div class="basket-item">
-        <div class="item-image">
-          <img
-            src=${cartItem.image}
-            alt=${cartItem.title}
-          />
-        </div>
-        <div class="item-info">
-          <h2>${cartItem.title}t</h2>
-          <p>&dollar;${cartItem.price}</p>
-          <div class="inc-dec">
-            <span>
-              <i class="fa-solid fa-plus"></i>
-            </span>
-            <span class="item-quantity">${cartItem.amount}</span>
-            <span>
-              <i class="fa-solid fa-minus"></i>
-            </span>
+  if (cart.length > 0) {
+    cart.forEach((cartItem) => {
+      renderProduct += `
+            <div class="basket-item">
+            <div class="item-image">
+              <img
+                src=${cartItem.image}
+                alt=${cartItem.title}
+              />
+            </div>
+            <div class="item-info">
+              <h2>${cartItem.title}t</h2>
+              <p>&dollar;${cartItem.price}</p>
+              <div class="inc-dec">
+                <span>
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+                <span class="item-quantity">${cartItem.amount}</span>
+                <span>
+                  <i class="fa-solid fa-minus"></i>
+                </span>
+              </div>
+              <span id="removeItem class="">
+                <i class="fa-sharp fa-solid fa-xmark fa-2x remove-item"></i>
+              </span>
+            </div>
           </div>
-          <span id="removeItem class="">
-            <i class="fa-sharp fa-solid fa-xmark fa-2x remove-item"></i>
-          </span>
-        </div>
-      </div>
-        `;
-  });
+            `;
+    });
+  } else {
+    renderProduct = `<p class="basket-warning">There is nothing in your basket!</p>`;
+  }
 
   basketItems.innerHTML = renderProduct;
-  basketLength.innerText = cart.length;
+
+  if (cart.length > 0) {
+    basketLength.innerText = cart.length;
+    basketItemLength.innerText = `Total Items: ${cart.length}`;
+  } else {
+    basketLength.innerText = "0";
+    basketItemLength.innerText = "Your cart is empty";
+  }
 
   const removeItemBtn = document.querySelectorAll(".remove-item");
 
@@ -188,7 +179,6 @@ const renderCartProducts = () => {
     removeItemButton.addEventListener("click", () => {
       for (let i = 0; i < cart.length; i++) {
         const cartItem = cart[i];
-        renderCartProducts();
         removeItemFromBasket(cartItem);
       }
     });
@@ -200,6 +190,15 @@ const renderCartProducts = () => {
   };
 };
 
+clearBasketBtn.addEventListener("click", (id) => {
+  if (cart.length > 0) {
+    cart = cart.filter((item) => item.id === id);
+    renderCartProducts();
+  } else {
+    alert("Your cart is empty! Add some product!");
+  }
+});
+
 openBasket.addEventListener("click", () => {
   basket.classList.toggle("active");
 });
@@ -207,3 +206,6 @@ openBasket.addEventListener("click", () => {
 closeBasket.addEventListener("click", () => {
   basket.classList.remove("active");
 });
+
+renderProducts();
+renderCartProducts();

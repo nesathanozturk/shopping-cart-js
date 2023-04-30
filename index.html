@@ -16,7 +16,7 @@
       <h1 class="title">Shopping Cart</h1>
       <span id="openBasket" class="cart-icon">
         <i class="fa-solid fa-cart-shopping"></i>
-        <span id="basket-length" class="basket-length">0</span>
+        <span id="basket-length" class="basket-length"></span>
       </span>
     </nav>
     <section id="basket" class="basket">
@@ -27,7 +27,11 @@
             <i class="fa-sharp fa-solid fa-xmark fa-2x"></i>
           </span>
         </div>
-        <button id="clearBasket" class="clear-basket">Clear Basket</button>
+        <div class="basket-alt">
+          <span id="basketItemLength" class="basket-item-length"></span>
+          <button id="clearBasket" class="clear-basket">Clear Basket</button>
+        </div>
+        <p id="totalAmount" class="total-amount">Total Amount</p>
         <div id="basket-items" class="basket-items"></div>
       </div>
     </section>

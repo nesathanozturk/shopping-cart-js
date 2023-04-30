@@ -22,7 +22,6 @@ body {
   height: 100vh;
   position: relative;
   line-height: 1.6;
-  overflow: hidden;
 }
 
 ol,
@@ -104,16 +103,15 @@ nav .basket-length {
   position: absolute;
   top: 0;
   right: 0;
-  transform: translateX(100%);
-  height: 100%;
-  border-left: 0.1px solid rgb(219, 219, 219);
+  display: none;
+  border: 0.1px solid rgb(219, 219, 219);
   border-radius: 0.3rem;
-  z-index: 1000;
   transition: all 0.45s ease-in-out;
 }
 
 .basket.active {
-  transform: translateX(0);
+  z-index: 999;
+  display: block;
 }
 
 .basket .container {
@@ -127,7 +125,7 @@ nav .basket-length {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .basket .container .basket-header .basket-title {
@@ -144,16 +142,49 @@ nav .basket-length {
   cursor: pointer;
 }
 
-.basket .container button {
-  background: #a21818;
-  color: #fff;
+.basket .container .basket-alt {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.basket .container .basket-alt button {
+  background: transparent;
+  color: #a21818;
   padding: 1rem 1rem;
   border-radius: 0.3rem;
-  border: none;
+  border: 1px solid #a21818;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+
+.basket .container .basket-alt button:hover {
+  background: #a21818;
+  color: #fff;
+}
+
+.basket .container .basket-alt span {
+  font-size: 1.3rem;
+}
+
+.basket .container p {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.basket .container .basket-warning {
+  width: 100%;
+  background: #feebc8;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #000;
+  text-align: center;
 }
 
 .basket .container .basket-item {
@@ -211,6 +242,7 @@ nav .basket-length {
 /* Products */
 .products {
   padding: 1rem;
+  z-index: -1;
 }
 
 .products .container {
@@ -218,7 +250,7 @@ nav .basket-length {
   margin: 0 auto;
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 2rem;
 }
 
@@ -242,9 +274,15 @@ nav .basket-length {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1rem 2rem;
 }
 
+.products .container .product-item .product-image {
+  width: 100%;
+  height: 100%;
+}
+
 .products .container .product-item img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
 }
 
 .products .container .product-item .product-info {
@@ -264,6 +302,7 @@ nav .basket-length {
 .products .container .product-item .product-info button {
   background: #5d3ebc;
   color: #fff;
+  margin-top: 1rem;
   padding: 0.8rem 2rem;
   border-radius: 0.3rem;
   border: none;
