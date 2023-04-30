@@ -174,7 +174,7 @@ const renderCartProducts = () => {
     basketItemLength.innerText = `Total Items: ${cart.length}`;
   } else {
     basketLength.innerText = "0";
-    basketItemLength.innerText = "Your cart is empty";
+    basketItemLength.innerText = "Total Items: 0";
   }
 
   const removeItemBtn = document.querySelectorAll(".remove-item");

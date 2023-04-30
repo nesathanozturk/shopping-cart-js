@@ -171,9 +171,10 @@ nav .basket-length {
   font-size: 1.3rem;
 }
 
-.basket .container p {
+.basket .container .total-amount {
+  padding: 1rem;
   font-size: 1.3rem;
-  margin-bottom: 1rem;
+  text-align: right;
 }
 
 .basket .container .basket-warning {
