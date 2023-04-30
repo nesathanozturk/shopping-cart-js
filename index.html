@@ -16,122 +16,22 @@
       <h1 class="title">Shopping Cart</h1>
       <span id="openBasket" class="cart-icon">
         <i class="fa-solid fa-cart-shopping"></i>
-        <span class="basket-length">1</span>
+        <span id="basket-length" class="basket-length">0</span>
       </span>
     </nav>
     <section id="basket" class="basket">
-      <div class="container">
+      <div id="basket-container" class="container">
         <div class="basket-header">
           <h1 class="basket-title">Your Cart</h1>
           <span id="closeBasket" class="basket-icon">
             <i class="fa-sharp fa-solid fa-xmark fa-2x"></i>
           </span>
         </div>
-        <div class="basket-item">
-          <div class="item-image">
-            <img
-              src="https://media.istockphoto.com/id/1354031012/tr/foto%C4%9Fraf/red-t-shirt-mockup-men-as-design-template-tee-shirt-blank-isolated-on-white-front-view.jpg?s=612x612&w=0&k=20&c=akf5x3AJdEk45fwbxDhAvXQYh-5ZsMJY2aWTMaTUogI="
-              alt="Basket Item"
-            />
-          </div>
-          <div class="item-info">
-            <h2>Red T-shirt</h2>
-            <p>&dollar;30.00</p>
-            <div class="inc-dec">
-              <span>
-                <i class="fa-solid fa-plus"></i>
-              </span>
-              <span class="item-quantity">1</span>
-              <span>
-                <i class="fa-solid fa-minus"></i>
-              </span>
-            </div>
-            <span class="remove-item">
-              <i class="fa-sharp fa-solid fa-xmark fa-2x"></i>
-            </span>
-          </div>
-        </div>
-        <div class="basket-item">
-          <div class="item-image">
-            <img
-              src="https://media.istockphoto.com/id/1354031012/tr/foto%C4%9Fraf/red-t-shirt-mockup-men-as-design-template-tee-shirt-blank-isolated-on-white-front-view.jpg?s=612x612&w=0&k=20&c=akf5x3AJdEk45fwbxDhAvXQYh-5ZsMJY2aWTMaTUogI="
-              alt="Basket Item"
-            />
-          </div>
-          <div class="item-info">
-            <h2>Red T-shirt</h2>
-            <p>&dollar;30.00</p>
-            <div class="inc-dec">
-              <span>
-                <i class="fa-solid fa-plus"></i>
-              </span>
-              <span class="item-quantity">1</span>
-              <span>
-                <i class="fa-solid fa-minus"></i>
-              </span>
-            </div>
-            <span class="remove-item">
-              <i class="fa-sharp fa-solid fa-xmark fa-2x"></i>
-            </span>
-          </div>
-        </div>
+        <div id="basket-items" class="basket-items"></div>
       </div>
     </section>
     <div class="products">
-      <div class="container">
-        <div class="product-item">
-          <div class="product-image">
-            <img
-              src="https://images.pexels.com/photos/3399995/pexels-photo-3399995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              alt="Red T-shirt"
-            />
-          </div>
-          <div class="product-info">
-            <h2>Red T-shirt</h2>
-            <p>&dollar;30.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-image">
-            <img
-              src="https://images.pexels.com/photos/3399995/pexels-photo-3399995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              alt="Red T-shirt"
-            />
-          </div>
-          <div class="product-info">
-            <h2>Red T-shirt</h2>
-            <p>&dollar;30.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-image">
-            <img
-              src="https://images.pexels.com/photos/3399995/pexels-photo-3399995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              alt="Red T-shirt"
-            />
-          </div>
-          <div class="product-info">
-            <h2>Red T-shirt</h2>
-            <p>&dollar;30.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-image">
-            <img
-              src="https://images.pexels.com/photos/3399995/pexels-photo-3399995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              alt="Red T-shirt"
-            />
-          </div>
-          <div class="product-info">
-            <h2>Red T-shirt</h2>
-            <p>&dollar;30.00</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+      <div id="products-container" class="container"></div>
     </div>
     <script src="js/script.js"></script>
   </body>

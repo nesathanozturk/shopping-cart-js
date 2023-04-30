@@ -188,7 +188,7 @@ nav .basket-length {
   font-size: 1.2rem;
 }
 
-.basket .container .basket-item .remove-item {
+.basket .container .basket-item .item-info .fa-xmark {
   position: absolute;
   top: 0.7rem;
   right: 1rem;

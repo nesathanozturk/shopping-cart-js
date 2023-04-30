@@ -12,7 +12,6 @@ const products = [
     title: "White Watch",
     image: "/images/white-watch.avif",
     price: 50,
-    salePrice: 40,
     amount: 1,
   },
   {
@@ -20,7 +19,6 @@ const products = [
     title: "Rayban Glass",
     image: "/images/rayban-glass.avif",
     price: 100,
-    salePrice: 60,
     amount: 1,
   },
   {
@@ -28,7 +26,6 @@ const products = [
     title: "Black T-Shirt",
     image: "/images/black-shirt.avif",
     price: 30,
-    salePrice: 10,
     amount: 1,
   },
   {
@@ -100,6 +97,108 @@ const products = [
 const basket = document.getElementById("basket");
 const openBasket = document.getElementById("openBasket");
 const closeBasket = document.getElementById("closeBasket");
+const basketItems = document.getElementById("basket-items");
+const productsContainer = document.getElementById("products-container");
+const basketLength = document.getElementById("basket-length");
+
+let cart = [];
+
+const renderProducts = () => {
+  let renderProduct = "";
+
+  products.forEach((product) => {
+    renderProduct += `
+        <div class="product-item">
+        <div class="product-image">
+          <img
+            src=${product.image}
+            alt=${product.title}
+          />
+        </div>
+        <div class="product-info">
+          <h2>${product.title}</h2>
+          <p>&dollar;${product.price}</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      `;
+  });
+  productsContainer.innerHTML = renderProduct;
+
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+  addToCartButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      addToCart(products[index]);
+    });
+  });
+
+  const addToCart = (product) => {
+    const existingProduct = cart.find((item) => item.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.amount += 1;
+    } else {
+      cart.push(product);
+      renderCartProducts();
+    }
+  };
+};
+
+renderProducts();
+
+const renderCartProducts = () => {
+  let renderProduct = "";
+
+  cart.forEach((cartItem) => {
+    renderProduct += `
+        <div class="basket-item">
+        <div class="item-image">
+          <img
+            src=${cartItem.image}
+            alt=${cartItem.title}
+          />
+        </div>
+        <div class="item-info">
+          <h2>${cartItem.title}t</h2>
+          <p>&dollar;${cartItem.price}</p>
+          <div class="inc-dec">
+            <span>
+              <i class="fa-solid fa-plus"></i>
+            </span>
+            <span class="item-quantity">${cartItem.amount}</span>
+            <span>
+              <i class="fa-solid fa-minus"></i>
+            </span>
+          </div>
+          <span id="removeItem class="">
+            <i class="fa-sharp fa-solid fa-xmark fa-2x remove-item"></i>
+          </span>
+        </div>
+      </div>
+        `;
+  });
+
+  basketItems.innerHTML = renderProduct;
+  basketLength.innerText = cart.length;
+
+  const removeItemBtn = document.querySelectorAll(".remove-item");
+
+  removeItemBtn.forEach((removeItemButton, index) => {
+    removeItemButton.addEventListener("click", () => {
+      for (let i = 0; i < cart.length; i++) {
+        const cartItem = cart[i];
+        renderCartProducts();
+        removeItemFromBasket(cartItem);
+      }
+    });
+  });
+
+  const removeItemFromBasket = (index) => {
+    cart.splice(index, 1);
+    renderCartProducts();
+  };
+};
 
 openBasket.addEventListener("click", () => {
   basket.classList.toggle("active");
