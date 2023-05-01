@@ -367,6 +367,10 @@ nav .basket-length {
 }
 
 @media (361px <= width <= 455px) {
+  .toastify {
+    white-space: nowrap;
+  }
+
   .products .container {
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
