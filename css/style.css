@@ -320,9 +320,10 @@ nav .basket-length {
 }
 
 /* Responsive */
-@media (0 <= width <= 76.8rem) {
+@media (0 <= width <= 768px) {
   .basket .container {
     width: 100vw;
+    padding: 2rem;
   }
 }
 
