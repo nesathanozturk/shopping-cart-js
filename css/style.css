@@ -368,7 +368,7 @@ nav .basket-length {
 
 @media (361px <= width <= 455px) {
   .toastify {
-    white-space: nowrap;
+    white-space: wrap;
   }
 
   .products .container {
