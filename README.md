@@ -8,3 +8,4 @@
 - CSS for styles
 - Javascript
 - Local Storage
+- Toast for Toastify JS
