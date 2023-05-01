@@ -123,6 +123,16 @@ const renderProducts = () => {
       alert("This product is already in your basket!");
     } else {
       cart.push(product);
+      Toastify({
+        text: "Product added to cart!",
+        duration: 3000,
+        newWindow: true,
+        class: "toastify",
+        close: true,
+        gravity: "top",
+        position: "left",
+        stopOnFocus: true,
+      }).showToast();
       saveToLocalStorage();
       renderCartProducts();
     }
